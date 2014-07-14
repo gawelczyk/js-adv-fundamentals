@@ -1,4 +1,4 @@
-function Range(start, end) {
+Motorola.Models.Range = function Range(start, end) {
     this.start = start;
     this.end = end;
     this.length = function () {
@@ -6,11 +6,11 @@ function Range(start, end) {
     }
 }
 
-Range.prototype.include = function (val) {
+Motorola.Models.Range.prototype.include = function (val) {
     return ((this.start < val ) && (this.end > val));
 }
 
-Range.prototype.length2 = function (val) {
+Motorola.Models.Range.prototype.length2 = function (val) {
     return this.end - this.start;
 }
 
