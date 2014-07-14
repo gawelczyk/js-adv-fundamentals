@@ -1,5 +1,5 @@
-Array.prototype.myMethod = function(param1, param2) {
-  // this is a reference to Array instance, which called meMethod()
+Array.prototype.myMethod = function (param1, param2) {
+    // this is a reference to Array instance, which called meMethod()
 };
 
 /*
@@ -15,22 +15,31 @@ function isEmpty() {
  * [1,2,3].include(3) => true
  * [1,2,3].include(99) => false
  * */
-function include(obj) {
-}
+
+Array.prototype.include = function (obj) {
+    return this.indexOf(obj) >= 0;
+};
 
 /* uniq() usage:
  * [1,2,3,1,1,2,1].uniq() => [1, 2, 3]
  * */
-function uniq() {
-}
+Array.prototype.uniq = function () {
+    var ar = [];
+    for (var i = 0; i < this.length; i++) {
+        if (!ar.include(this[i]))
+            ar.push(this[i]);
+    }
+    return ar;
+};
 
 // arr.splice(index, deleteCount, objToInsert1, objToInsert2, ...);
 /*
  * insertAt(index, object) usage:
  * ["a", "b", "c"].insertAt(1, "xxx") => ["a", "xxx", "b", "c"]
  * */
-function insertAt(index, object) {
-}
+Array.prototype.insertAt = function (index, object) {
+    this.splice(index, 0, object);
+};
 
 /*
  * deleteAt(index) usage:
@@ -38,14 +47,16 @@ function insertAt(index, object) {
  * var deletedObject = arr.deleteAt(1);
  * deletedObject === "b" && arr == ["a", "c"]
  * */
-function deleteAt(index) {
-}
+Array.prototype.deleteAt = function(index) {
+    return this.splice(index, index);
+};
 
 /* shuffle() usage:
  * [1, 2, 3, 4].shuffle() => [2, 4, 1, 3]
  *
  * */
 function shuffle() {
+
 }
 
 /*

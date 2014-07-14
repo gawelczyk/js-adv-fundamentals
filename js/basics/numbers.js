@@ -4,7 +4,8 @@
  * odd(7) => true
  * */
 function odd(number) { // true/false
-  return 1;
+    var r = number % 2;
+    return r !== 0;
 }
 
 
@@ -21,14 +22,14 @@ function toInfinity() {
  * Returns pseudo random number between [0, max)
  * */
 function random(max) {
-//  Math.random();
+    return Math.random() * max;
 }
 
 /*
  * Returns pseudo random number between [min, max)
  * */
 function randomBetween(min, max) {
-
+return min + (max-min)*Math.random();
 }
 
 function even(number) { // true/false

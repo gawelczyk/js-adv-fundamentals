@@ -1,9 +1,14 @@
 /*
  * Converts arguments to string.
  * Usage:
- * argsToArray(1, null, "imba") => "1, null, imba"
+ * argsToString(1, null, "imba") => "1, null, imba"
  * */
 function argsToString() {
+    var s = '';
+    for(var i= 0;i<arguments.length;i++){
+        s += arguments[i] + (i==arguments.length-1?'':', ');
+    }
+    return s;
 }
 
 function argsToStringExampleUsage() {
@@ -11,7 +16,6 @@ function argsToStringExampleUsage() {
   console.log(result);
 }
 //argsToStringExampleUsage();
-
 
 /*
  * Returns an Array instance containing all arguments passed to function

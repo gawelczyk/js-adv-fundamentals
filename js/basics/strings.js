@@ -6,6 +6,11 @@ for (var i = 0; i < 10; i++) {
  * reverse("abc") => "cba"
  * */
 function reverse(string) {
+    var s = '';
+    for (var i = string.length - 1; i >= 0; i--) {
+        s = s + string[i];
+    }
+    return s;
 }
 
 /*
@@ -13,8 +18,15 @@ function reverse(string) {
  * reverse("abc xyz") => "cba zyx"
  * */
 function reverseEachWord(string) {
-  //var arr = string.split("|")
-  //arr.join("#")
+    //var arr = string.split("|")
+    //arr.join("#")
+    var arr = string.split(" "), arr2 = [], s = '';
+
+    for (var i = 0; i < arr.length; i++) {
+        s = reverse(arr[i]);
+        arr2.push(s);
+    }
+    return  arr2.join(" ");
 }
 
 /*
@@ -30,8 +42,6 @@ function titleize(string) {
  * */
 function truncate(string, length) {
 }
-
-
 
 
 function charAt(string, index) { // for index < 0

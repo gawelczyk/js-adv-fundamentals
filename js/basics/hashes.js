@@ -1,5 +1,5 @@
-Object.prototype.myMethod = function(param1, param2) {
-  // this === object instance
+Object.prototype.myMethod = function (param1, param2) {
+    // this === object instance
 };
 
 var obj = {name: "Bobs"};
@@ -10,15 +10,27 @@ for (var propertyName in obj) {
  * Usage:
  * {name: "Bob", age: 22}.keys() => ['name', 'age']
  * */
-function keys() {
-}
+Object.prototype.keys = function () {
+    var keys = [];
+    for (var propertyName in this) {
+        if (this.hasOwnProperty(propertyName))
+            keys.push(propertyName);
+    }
+    return keys;
+};
 
 /*
  * Usage:
  * {name: "Bob", age: 22}.values() => ["Bob", 22]
  * */
-function values() {
-}
+Object.prototype.values = function () {
+    var vals = [];
+    for (var propertyName in this) {
+        if (this.hasOwnProperty(propertyName))
+            vals.push(this[propertyName]);
+    }
+    return vals;
+};
 
 /*
  * Removes hash pair by given key, and returns removed data as array

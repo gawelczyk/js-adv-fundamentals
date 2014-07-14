@@ -10,23 +10,26 @@ function times(fn) {
 }
 
 // method definition example
-Array.prototype.myMethod = function(param1, param2) {
+Array.prototype.myMethod = function (param1, param2) {
 };
 
 /*
  * Calls function fn for each element of array
  * */
-function each(fn) {
+Array.prototype.each = function (fn) {
+    for (var i = 0; i < this.length; i++) {
+        fn.call(this, this[i], i);
+    }
 }
 
 function eachExampleUsages() {
-  ["bob", "ed", "kate"].each(function(name) {
-    console.log("Hi " + name);
-  });// => logs on console: "Hi Bob", "Hi Kate", "Hi Ed"
+    ["bob", "ed", "kate"].each(function (name) {
+        console.log("Hi " + name);
+    });// => logs on console: "Hi Bob", "Hi Kate", "Hi Ed"
 
-  [1, 2, 3, 4].each(function(i) {
-    console.log(i);
-  }); // => logs on console: 1, 2, 3, 4
+    [1, 2, 3, 4].each(function (i) {
+        console.log(i);
+    }); // => logs on console: 1, 2, 3, 4
 }
 //eachExampleUsages();
 
@@ -34,17 +37,24 @@ function eachExampleUsages() {
 /*
  * Maps array using function fn
  * */
-function map(fn) {
+Array.prototype.map = function (fn) {
+    var res = [];
+    for (var i = 0; i < this.length; i++) {
+        res.push(fn.call(this, this[i]));
+    }
+    return res;
 }
 
 function mapExampleUsage() {
-  var squares = [1, 2, 3].map(function(i) {
-    return i * i;
-  }); // => [1, 4, 9]
+    var squares = [1, 2, 3].map(function (i) {
+        return i * i;
+    }); // => [1, 4, 9]
+    console.log(squares);
 
-  var greetings = ["Bob", "Ed"].map(function(name) {
-    return "Hi " + name + "!";
-  }); // => ["Hi Bob!", "Hi Ed!"]
+    var greetings = ["Bob", "Ed"].map(function (name) {
+        return "Hi " + name + "!";
+    }); // => ["Hi Bob!", "Hi Ed!"]
+    console.log(greetings);
 }
 //mapExampleUsage();
 
@@ -57,14 +67,14 @@ function filter(fn) {
 }
 
 function filterExampleUsage() {
-  var odds = [1, 2, 3, 4].filter(function(i) {
-    return i % 2 === 1;
-  }); // => [1, 3]
+    var odds = [1, 2, 3, 4].filter(function (i) {
+        return i % 2 === 1;
+    }); // => [1, 3]
 
-  var firstLetter = "B";
-  var startingWithFirstLetter = ["Kate", "Bob", "Ed", "Ben"].filter(function(name) {
-    return name[0].toUpperCase() === firstLetter;
-  }); // => ["Bob", "Ben"]
+    var firstLetter = "B";
+    var startingWithFirstLetter = ["Kate", "Bob", "Ed", "Ben"].filter(function (name) {
+        return name[0].toUpperCase() === firstLetter;
+    }); // => ["Bob", "Ben"]
 }
 //filterExampleUsage();
 
@@ -130,7 +140,7 @@ function Person() {
 
 }
 
-Person.prototype.getName = function() {
+Person.prototype.getName = function () {
 };
 
 bob = new Person("Bob")
