@@ -1,12 +1,14 @@
-function testUser() {
-  var User = extend(null, {
+
+var User = extend(null, {
     constructor: function(login) {
-      this.login = login;
+        this.login = login;
     },
     getLogin: function() {
-      return this.login;
+        return this.login;
     }
-  });
+});
+
+function testUser() {
 
   var login = "ed";
   var user = new User(login);
@@ -14,4 +16,10 @@ function testUser() {
   assertEqual(user.constructor, User);
   assertEqual(user.getLogin(), login);
 }
+
+console.log('inheritance user tests: ');
 testUser();
+for (var p in User){
+    console.log('User:\t',p);
+}
+console.log('//inheritance user tests: ');
