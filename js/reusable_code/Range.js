@@ -1,18 +1,35 @@
-Motorola.Models.Range = function Range(start, end) {
-    this.start = start;
-    this.end = end;
-    this.length = function () {
+//Motorola.Models.Range = function Range(start, end) {
+//    this.start = start;
+//    this.end = end;
+//    this.length = function () {
+//        return this.end - this.start;
+//    }
+//}
+//
+//Motorola.Models.Range.prototype.include = function (val) {
+//    return ((this.start < val ) && (this.end > val));
+//}
+//
+//Motorola.Models.Range.prototype.length2 = function (val) {
+//    return this.end - this.start;
+//}
+
+Motorola.Models.Range = (function(){
+    var Range = function Range(start, end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    Range.prototype.include = function (val) {
+        return ((this.start < val ) && (this.end > val));
+    }
+
+    Range.prototype.length = function (val) {
         return this.end - this.start;
     }
-}
 
-Motorola.Models.Range.prototype.include = function (val) {
-    return ((this.start < val ) && (this.end > val));
-}
-
-Motorola.Models.Range.prototype.length2 = function (val) {
-    return this.end - this.start;
-}
+    return Range;
+})();
 
 function rangeExampleUsage(Range) {
     // Konstruktor przyjmuje dwa parametry: start i end, definiujące poczatek i koniec obustronnie domknietego przedziału <start, end>
@@ -29,7 +46,6 @@ function rangeExampleUsage(Range) {
 
     /* length() returns length of range */
     console.log(range.length()); // => 89
-    console.log(range.length2()); // => 89
 
     /* intersectsith(otherRange) returns true if intersection of both ranges is not empty */
 //    range.intersectsWith(otherRange); // => true
@@ -45,3 +61,5 @@ function rangeExampleUsage(Range) {
 //    range.covers(otherRange); // => false
 }
 
+console.log('Motorola.Models.Range tests: ')
+rangeExampleUsage(Motorola.Models.Range);
