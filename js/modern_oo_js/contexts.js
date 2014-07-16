@@ -4,14 +4,9 @@
  * Usage:
  * callInContext(myFunction, myObject, 1, "xxx", [])
  * */
-function bind(contextObj,fn){
-
-}
-
-
- function callInContext(fn, contextObj) {
+function callInContext(fn, contextObj) {
     var args = Array.prototype.slice.call(arguments, 0);
-    args.shift().apply(args.shift(),args);
+    args.shift().apply(args.shift(), args);
 }
 
 function callInContextExampleUsage() {
@@ -24,9 +19,9 @@ function callInContextExampleUsage() {
         name: "Bob"
     };
 
-var result = callInContext(myFunction, bob, "www", 997);
+    var result = callInContext(myFunction, bob, "www", 997);
 
-  console.log(result);
+    console.log(result);
 }
 //callInContextExampleUsage();
 
@@ -41,7 +36,10 @@ function log() {
  * Each time binded function is called, its called in context of contextObj
  * */
 function bind(contextObj, fn) {
-
+    var fn1 = function () {
+        return fn.apply(contextObj, arguments);
+    };
+    return fn1;
 }
 
 function bindExampleUsage() {
@@ -65,3 +63,6 @@ function bindExampleUsage() {
     result = ed.myMethod(); // this === bob
     console.log("3rd result:", result);
 }
+console.log('bindExampleUsage');
+bindExampleUsage();
+console.log('//bindExampleUsage');
