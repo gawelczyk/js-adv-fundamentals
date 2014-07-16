@@ -36,10 +36,9 @@ function log() {
  * Each time binded function is called, its called in context of contextObj
  * */
 function bind(contextObj, fn) {
-    var fn1 = function () {
+    return function () {
         return fn.apply(contextObj, arguments);
     };
-    return fn1;
 }
 
 function bindExampleUsage() {
