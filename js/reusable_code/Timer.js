@@ -79,6 +79,11 @@ Motorola.Timer = (function (Evented, mixin) {
         clearInterval(this.intervalId);
         clearTimeout(this.timeoutId);
     };
+    timer.prototype.stop = function () {
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeoutId);
+        this.currentStep = 0;
+    };
 
     return timer;
 })(Motorola.Evented, Motorola.mixin);
@@ -124,16 +129,15 @@ function timerExampleUsage(Timer) {
     }, 5000);
 
 
-//
-//  // stop() - stops timer
-//  setTimeout(function() {
-//    timer.stop();
-//  }, 14000);
-//
-//  // start again from currentStep == 0
-//  setTimeout(function() {
-//    timer.start();
-//  }, 19000);
+    // stop() - stops timer
+    setTimeout(function () {
+        timer.stop();
+    }, 15000);
+
+    // start again from currentStep == 0
+    setTimeout(function () {
+        timer.start();
+    }, 19000);
 }
 console.log('timerExampleUsage');
 timerExampleUsage(Motorola.Timer);
