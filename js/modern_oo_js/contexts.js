@@ -4,7 +4,12 @@
  * Usage:
  * callInContext(myFunction, myObject, 1, "xxx", [])
  * */
-function callInContext(fn, contextObj) {
+function bind(contextObj,fn){
+
+}
+
+
+ function callInContext(fn, contextObj) {
     var args = Array.prototype.slice.call(arguments, 0);
     args.shift().apply(args.shift(),args);
 }
